@@ -42,29 +42,29 @@ const float MAXIMO_HUMEDAD_ENFRIAMIENTO = 60;//0,06segundos
 
 // MESOFILIA //
 
-int LECTURA_TEMPERATURA_MESOFILIA;            // 
-float VOLTAJE_TEMPERATURA_MESOFILIA;         //  VARIABLES 
-float TEMPERATURA_MESOFILIA;
+int LECTURA_TEMPERATURA_MESOFILIA;            // Lee la temperatura
+float VOLTAJE_TEMPERATURA_MESOFILIA;         // Saca el porcentaje de temperatura    //  VARIABLES 
+float TEMPERATURA_MESOFILIA;                // Temperatura final
 
 // TERMOFILIA //
 
-int LECTURA_TEMPERATURA_TERMOFILIA;
-float VOLTAJE_TEMPERATURA_TERMOFILIA;
-float TEMPERATURA_TERMOFILIA;               //variables
-int LECTURA_HUMEDAD_TERMOFILIA;
-float VOLTAJE_HUMEDAD_TERMOFILIA;
-float HUMEDAD_TERMOFILIA;
+int LECTURA_TEMPERATURA_TERMOFILIA;     // Lee la temperatura
+float VOLTAJE_TEMPERATURA_TERMOFILIA;   //  Lee la temperatura para sacar porcentaje
+float TEMPERATURA_TERMOFILIA;           //  Temperatura final                    
+int LECTURA_HUMEDAD_TERMOFILIA;         // Lee la humedad 
+float VOLTAJE_HUMEDAD_TERMOFILIA;       //hace porcentaje de humedad
+float HUMEDAD_TERMOFILIA;               // Humedad final
 
 // ENFRIAMIENTO //
 
-int LECTURA_TEMPERATURA_ENFRIAMIENTO;
+int LECTURA_TEMPERATURA_ENFRIAMIENTO;      //Lee la temperatura
 float VOLTAJE_TEMPERATURA_ENFRIAMIENTO;
 float TEMPERATURA_ENFRIAMIENTO;
 int LECTURA_HUMEDAD_ENFRIAMIENTO;         //variables
 float VOLTAJE_HUMEDAD_ENFRIAMIENTO;
 float HUMEDAD_ENFRIAMIENTO;
 
-void setup()  //bucle de <
+void setup()  //bucle de 
 {
  Serial.begin(9600); 
  configurarPinMode(); 
