@@ -1,44 +1,48 @@
 //cables que van conectados al arduino
 
 //Definición de pines por etapa
-//Mesofilia
-#define PIN_TEMPERATURA_MESOFILIA A0 //Sensor de Temperatura
-#define PIN_VENTILADOR_MESOFILIA 2   //Activador Sistema de Ventilación
+//Mesofilia                              Definiciones:
+#define PIN_TEMPERATURA_MESOFILIA A0      //Sensor de Temperatura
+#define PIN_VENTILADOR_MESOFILIA 2       //Activador Sistema de Ventilación
 
-//Termofilia
+//Termofilia                                   Definiciones:
 #define PIN_TEMPERATURA_TERMOFILIA A2          //Sensor de Temperatura
 #define PIN_HUMEDAD_TERMOFILIA A1             //Sensor de Humedad
 #define PIN_ELECTROVALVULA_TERMOFILIA 3      //Activador Sistema de Riego
 #define PIN_VENTILADOR_TERMOFILIA 4          //Activador Sistema de Ventilación
-#define PIN_TEMPERATURA_ENFRIAMIENTO A3
-#define PIN_HUMEDAD_ENFRIAMIENTO A4
-#define PIN_ELECTROVALVULA_ENFRIAMIENTO 5
-#define PIN_VENTILADOR_ENFRIAMIENTO 6
-#define PIN_TRIGGER_ULTRASONIDO_RECOLECCION 7
-#define PIN_ECHO_ULTRASONIDO_RECOLECCION 8
-#define PIN_LICUADORA_RECOLECCION 9
 
-//SEGUNDOS EN LO QUE TARDA EN REVISAR (lo maneja por milisegundos)
+//ENFRIAMIENTO                                  SENSORES:
+#define PIN_TEMPERATURA_ENFRIAMIENTO A3               //Temperatura
+#define PIN_HUMEDAD_ENFRIAMIENTO A4                  //Humedad
+#define PIN_ELECTROVALVULA_ENFRIAMIENTO 5           //Dispensador
+#define PIN_VENTILADOR_ENFRIAMIENTO 6              //Ventilador
 
-unsigned long currentMillis;
-unsigned long startMillis;
-const int INTERVALO_SENSAR_TEMPERATURA = 5000;
-const int INTERVALO_SENSAR_HUMEDAD = 1000; 
-const float MINIMO_TEMPERATURA_MESOFILIA = 20;
-const float MAXIMO_TEMPERATURA_MESOFILIA = 45;
-const float MINIMO_TEMPERATURA_TERMOFILIA = 60;  
-const float MAXIMO_TEMPERATURA_TERMOFILIA = 70;
-const float MINIMO_TEMPERATURA_ENFRIAMIENTO = 40;
-const float MAXIMO_TEMPERATURA_ENFRIAMIENTO = 45;
-const float MINIMO_HUMEDAD_TERMOFILIA = 60;
-const float MAXIMO_HUMEDAD_TERMOFILIA = 60; 
-const float MINIMO_HUMEDAD_ENFRIAMIENTO = 60;
-const float MAXIMO_HUMEDAD_ENFRIAMIENTO = 60;
+//Recolección                                     Definiciones:
+#define PIN_TRIGGER_ULTRASONIDO_RECOLECCION 7     //Para dectectar/prender si hay algo en la trituradora
+#define PIN_ECHO_ULTRASONIDO_RECOLECCION 8        //Para dectectar/apagar si no hay nada en la trituradora
+#define PIN_LICUADORA_RECOLECCION 9              //es la trituradora
+
+//SEGUNDOS EN LO QUE TARDA EN REVISAR(lo maneja por milisegundos)
+
+unsigned long currentMillis;     //Define que estos numeros son milisegundos
+unsigned long startMillis;      //inicia los milisegundos
+const int INTERVALO_SENSAR_TEMPERATURA = 5000; //5 segundos
+const int INTERVALO_SENSAR_HUMEDAD = 1000; //1 segundo
+const float MINIMO_TEMPERATURA_MESOFILIA = 20;//0,02 segundos
+const float MAXIMO_TEMPERATURA_MESOFILIA = 45;//0,045 segundos
+const float MINIMO_TEMPERATURA_TERMOFILIA = 60;//0,06 segundos
+const float MAXIMO_TEMPERATURA_TERMOFILIA = 70;//0,07 segundos
+const float MINIMO_TEMPERATURA_ENFRIAMIENTO = 40;//0,04 segundos
+const float MAXIMO_TEMPERATURA_ENFRIAMIENTO = 45;// 0,045 segundos
+const float MINIMO_HUMEDAD_TERMOFILIA = 60; //0,06 segundos
+const float MAXIMO_HUMEDAD_TERMOFILIA = 60; //0,06 segundos
+const float MINIMO_HUMEDAD_ENFRIAMIENTO = 60;//0,06 segundos
+const float MAXIMO_HUMEDAD_ENFRIAMIENTO = 60;//0,06segundos
 
 
 // MESOFILIA //
 
-int LECTURA_TEMPERATURA_MESOFILIA; 
+int LECTURA_TEMPERATURA_MESOFILIA;            // 
 float VOLTAJE_TEMPERATURA_MESOFILIA;         //  VARIABLES 
 float TEMPERATURA_MESOFILIA;
 
@@ -60,7 +64,7 @@ int LECTURA_HUMEDAD_ENFRIAMIENTO;         //variables
 float VOLTAJE_HUMEDAD_ENFRIAMIENTO;
 float HUMEDAD_ENFRIAMIENTO;
 
-void setup() 
+void setup()  //bucle de <
 {
  Serial.begin(9600); 
  configurarPinMode(); 
@@ -86,7 +90,7 @@ void loop()
   VOLTAJE_HUMEDAD_TERMOFILIA = LECTURA_HUMEDAD_TERMOFILIA * (5.0 / 1023.0);  //humedad termofilia //
   HUMEDAD_TERMOFILIA = (VOLTAJE_HUMEDAD_TERMOFILIA - 0.8) * (100.0 / 3.4);
 
-          //ENFRIAMIENTO
+  //ENFRIAMIENTO
 
   LECTURA_TEMPERATURA_ENFRIAMIENTO = analogRead(PIN_TEMPERATURA_ENFRIAMIENTO);
   VOLTAJE_TEMPERATURA_ENFRIAMIENTO = LECTURA_TEMPERATURA_ENFRIAMIENTO * (5.0 / 1023.0); // enfriamiento tempertura //
